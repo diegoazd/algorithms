@@ -9,19 +9,19 @@ public class GraphTest {
   Graph graph;
 
   @Test
-  public void shouldEdgeBe0() {
+  public void shouldNodeBe0() {
     graph = new Graph(3);
 
     assertEquals(graph.getVertexs(), 3);
-    assertEquals(graph.getEdges(), 0);
+    assertEquals(graph.getNodes(), 0);
 
-    graph.addEdge(0,1);
-    graph.addEdge(0,2);
-    graph.addEdge(1,0);
-    graph.addEdge(1,1);
-    graph.addEdge(1,2);
+    graph.addNode(0,1,0);
+    graph.addNode(0,2,0);
+    graph.addNode(1,0,0);
+    graph.addNode(1,1,0);
+    graph.addNode(1,2,0);
 
-    assertEquals(graph.getEdges(), 5);
+    assertEquals(graph.getNodes(), 5);
   }
 
   @Test
@@ -60,5 +60,23 @@ public class GraphTest {
     nodes.add(new Node(4,3,2));
 
     assertEquals(11l, k.mst(nodes));
+  }
+
+  @Test
+  public void shouldFindMSTPrim() {
+    Prim p = new Prim(4);
+
+    p.addNode(0,1,7);
+    p.addNode(1,0,7);
+    p.addNode(0,3,6);
+    p.addNode(3,0,6);
+    p.addNode(3,1,9);
+    p.addNode(1,3,9);
+    p.addNode(3,2,8);
+    p.addNode(2,3,8);
+    p.addNode(1,2,6);
+    p.addNode(2,1,6);
+
+    assertEquals(19l, p.mst());
   }
 }

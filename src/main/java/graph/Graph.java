@@ -4,7 +4,7 @@ import java.util.*;
 
 public class Graph {
   private int V, E;
-  private LinkedList<Integer> adj[];
+  public LinkedList<Node> adj[];
 
   static int time = 0;
 
@@ -13,11 +13,11 @@ public class Graph {
     E = 0;
     adj = new LinkedList[V];
     for(int i=0; i<vertexs; i++) {
-      adj[i] = new LinkedList<Integer>();
+      adj[i] = new LinkedList<Node>();
     }
   }
 
-  public int getEdges() {
+  public int getNodes() {
     return this.E;
   }
 
@@ -25,18 +25,8 @@ public class Graph {
     return this.V;
   }
 
-  class Edge {
-    int v;
-    int u;
-
-    Edge(int u, int v) {
-      this.v = v;
-      this.u = u;
-    }
-  }
-
-  public void addEdge(int u, int v) {
-    adj[u].add(v);
+  public void addNode(int u, int v, int w) {
+    adj[u].add(new Node(u,v,w));
     E++;
   }
 }
