@@ -79,4 +79,27 @@ public class GraphTest {
 
     assertEquals(19l, p.mst());
   }
+
+  @Test
+  public void shouldFindShortestPathBellmanFord() {
+    ShortestPath sp = new ShortestPath(4);
+    sp.graph.addNode(0,1,7);
+    sp.graph.addNode(1,0,7);
+    sp.graph.addNode(0,3,6);
+    sp.graph.addNode(3,0,6);
+    sp.graph.addNode(3,1,9);
+    sp.graph.addNode(1,3,9);
+    sp.graph.addNode(3,2,8);
+    sp.graph.addNode(2,3,8);
+    sp.graph.addNode(1,2,6);
+    sp.graph.addNode(2,1,6);
+
+    sp.bellmanFord();
+
+    assertEquals(sp.dist[1], 7);
+    assertEquals(sp.dist[2], 13);
+    assertEquals(sp.dist[3], 6);
+
+
+  }
 }
